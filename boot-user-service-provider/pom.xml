@@ -45,6 +45,17 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+
+        <!-- 添加Dubbo依赖 -->
+        <!-- 导入Start依赖
+               SpringBoot版本在2.0以上 使用 0.2.0
+               SpringBoot版本在1.0时   使用0.1.1版本 -->
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
