@@ -1,5 +1,6 @@
 package com.yqx.gmall;
 
+import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *          1> 导入Dubbo-starter依赖;
  *          2> 导入Dubbo其他依赖
  */
+@EnableDubbo    // 开启基于注解的Dubbo功能
 @SpringBootApplication
 public class BootUserServiceProviderApplication {
 

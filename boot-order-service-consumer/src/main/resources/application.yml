@@ -1,0 +1,16 @@
+# 配置端口号
+server:
+  port: 9999
+
+# 配置Dubbo
+dubbo:
+  application:
+    name: boot-order-service-consumer   # 配置Dubbo服务名称
+
+  registry:
+    address: zookeeper://127.0.0.1:2181 # 连接注册中心 端口号为2181
+
+  monitor:
+    protocol: registry                  # 去注册中心自动找监控中心
+
+

@@ -1,0 +1,17 @@
+server:
+  port: 9998
+# 配置Dubbo
+dubbo:
+  application:
+    name: boot-user-service-provider    # Dubbo服务名称 不可重复
+
+  registry:                             # Dubbo注册中心
+    address: localhost:2181             # 注册中心地址
+    protocol: zookeeper                 # 注册中心名称
+
+  protocol:                             # 通信方式 协议名和端口
+    name: dubbo                         # 通信方式为Dubbo方式
+    port: 20880                         # 通信端口为20880
+
+  monitor:                              # 连接 监控中心
+    protocol: registry                  # registry 去注册中心自动发现

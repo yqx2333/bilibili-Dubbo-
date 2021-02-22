@@ -1,5 +1,6 @@
 package com.yqx.gmall.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.yqx.gmall.bean.UserAddress;
 import com.yqx.gmall.service.OrderService;
 import com.yqx.gmall.service.UserService;
@@ -18,7 +19,8 @@ import java.util.List;
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    @Autowired
+    // @Autowired  不再使用
+    @Reference  // 远程引用  会自动从注册中心发现  注入UserService
     private UserService userService;
 
     // 根据用户ID 初始化订单

@@ -1,16 +1,19 @@
 package com.yqx.gmall.service.impl;
 
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.yqx.gmall.bean.UserAddress;
 import com.yqx.gmall.service.UserService;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
 // 实现类
 // 服务提供者(用户模块)要 提供接口的实现类 给外界调用
-@Service
+
+@Service    // Dubbo家用Service 暴漏服务!
+@Component  // Spring家用Component
 public class UserServiceImpl implements UserService {
 
     /**
