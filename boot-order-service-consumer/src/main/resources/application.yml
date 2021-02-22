@@ -3,6 +3,8 @@ server:
   port: 9999
 
 # 配置Dubbo
+# 暴漏服务用 @Service注解
+# 消费服务用 @Reference注解
 dubbo:
   application:
     name: boot-order-service-consumer   # 配置Dubbo服务名称
