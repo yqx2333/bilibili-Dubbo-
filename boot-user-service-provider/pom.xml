@@ -45,7 +45,6 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-
         <!-- 添加Dubbo依赖 -->
         <!-- 导入Start依赖
                SpringBoot版本在2.0以上 使用 0.2.0
@@ -54,6 +53,13 @@
             <groupId>com.alibaba.boot</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>0.2.0</version>
+        </dependency>
+
+        <!-- 添加Hystrix熔断器 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <version>2.1.0.RELEASE</version>
         </dependency>
 
     </dependencies>

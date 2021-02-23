@@ -1,5 +1,6 @@
 server:
   port: 9998
+
 # 配置Dubbo
 dubbo:
   application:
