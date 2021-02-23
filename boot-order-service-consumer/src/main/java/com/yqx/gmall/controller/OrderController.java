@@ -2,7 +2,6 @@ package com.yqx.gmall.controller;
 
 import com.yqx.gmall.bean.UserAddress;
 import com.yqx.gmall.service.OrderService;
-import com.yqx.gmall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
