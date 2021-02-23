@@ -15,3 +15,8 @@ dubbo:
 
   monitor:                              # 连接 监控中心
     protocol: registry                  # registry 去注册中心自动发现
+
+  # provider: 统一设置服务提供方规则
+  provider:                             # 服务提供者设置超时时间
+    timeout: 1000
+

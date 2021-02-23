@@ -11,8 +11,67 @@ dubbo:
 
   registry:
     address: zookeeper://127.0.0.1:2181 # 连接注册中心 端口号为2181
+    # 设置为false时,即使注册中心不存在也不会报错.
+    check: false
 
   monitor:
     protocol: registry                  # 去注册中心自动找监控中心
+
+  # <dubbo:reference interface="com.yqx.gmall.service.UserService" check="false" /> 单个服务不检查
+  # <dubbo:consumer check="false" />  配置消费者统一规则 所有的服务都不检查
+  # reference是为单个消费设置   consumer是为所有消费端设置
+  consumer:                             # 启动时检查 服务消费者在启动的时候会去注册中心检查服务提供者是否存在
+    check: false                        # 如果不存在则会报错 默认为true 改为false即可
+    # timeout: 超时时间,默认为1000ms
+    # 当消费端在调用服务提供端的时候,为了防止提供端方法调用慢,导致大量线程阻塞 可以设置超时时间 提升效率
+    timeout: "3000"
+
+    # timeout一般配合retries一起使用  重试次数 多试几次    [0代表不重试]
+    # 如果设置为3 那么如果第一次调用失败了 那么最多还会再调用三次 一共四次(包含第一次)
+    # 比如订单消费端访问用户提供端 且用户提供端有多个 那么重试时会去别的用户提供端重试!
+    # 在幂等方法可以设置重试次数 (方法无论运行多少次,跟运行一次的效果是一样的)  [查询\删除\修改]
+    # 非幂等方法不可以设置重试次数 (方法每一次运行都会产生新的结果)  [添加]
+    retries: 3                          # 不包含第一次
+
+    # 设置版本号
+    version:
+
+
+
+
+
+
+
+
+
+# 为指定的方法 设置超时时间
+#<dubbo:reference>
+#  <dubbo:method name="指定的方法名称" timeout="超时时间"/>
+#<dubbo:reference/>
+
+
+# XML配置覆盖关系   方法方法方法方法最优先!
+#  明确指定方法了 那么最优先;
+#  方法级最优先(精确优先)   || 方法级优先 接口级次之 全局配置最低
+#  消费者配置优先          || 如果级别一样 则消费方优先 提供方次之
+
+# Version 可以在@Service注解中配置 [多版本机制]
+# 版本号机制 比如我写了一个UserServiceImpl1 我可以把它版本号设置为 1.0.0       \\ 在低压力时间段，先升级一半提供者为新版本
+# 现在又写了一个新版本UserServiceImpl2     我可以把它版本号设置为 2.0.0       \\ 再将所有消费者升级为新版本
+# 在服务消费端 设置version=1.0.0 那么调用的就是UserServiceImpl1             \\ 然后将剩下的一半提供者升级为新版本
+# 可以设置 version=*   那么就是新老版本随机调用
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

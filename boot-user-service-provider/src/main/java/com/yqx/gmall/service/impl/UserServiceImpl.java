@@ -12,7 +12,7 @@ import java.util.List;
 // 实现类
 // 服务提供者(用户模块)要 提供接口的实现类 给外界调用
 
-@Service    // Dubbo家用Service 暴漏服务!
+@Service()   // Dubbo家用Service 暴漏服务!
 @Component  // Spring家用Component
 public class UserServiceImpl implements UserService {
 
