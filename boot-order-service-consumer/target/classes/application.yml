@@ -39,9 +39,6 @@ dubbo:
     # 本地存根代码测试
     stub: com.yqx.gmall.stub.UserServiceStub
 
-  scan:
-    base-packages: # 开启包扫描 添加该注解后扫描指定的包 可以去掉@EnableDubbo注解了!
-
 
 
 
@@ -74,48 +71,6 @@ dubbo:
 # 也就是远程调用接口 在我(服务消费者)本地也有一份存根代码
 # 本地存根代码在调用之前做一些判断 或者添加一些小功能等等
 # 在调用之前 现在本地存根代码上进行 如果满足要求则调用远程服务; 如果不满足则不调用即可
-
-
-# SpringBoot与Dubbo整合的三种方式
-#   1. 导入dubbo-starter依赖,在application.properties文件中配置属性;
-#         使用@Service注解暴漏服务      使用@Reference注解引用服务
-#         使用时必须在SpringBoot的启动类上添加 @EnableDubbo注解 代表开启支持Dubbo注解的功能
-#   2. 方法级别的配置
-#         导入dubbo-starter依赖
-#         保留dubbo.xml配置文件  /比如将provider.xml文件直接放在resource包下
-#         直接将所有的配置在xml文件中配置即可 application.properties文件可删除
-#         使用时需要在启动类上添加 @ImportResource(locations="classpath:provider.xml") 注解 代表扫描类路径下的provider.xml文件
-#         也可以将Dubbo中的@Service注解 取消使用;
-#   3. 使用注解API配置
-#         将每一个组件手动创建到容器中 需要自己写一个配置类
-
-
-# Dubbo高可用
-#  Dubbo直连 Zookeeper宕机与Dubbo直连
-#  即Zookeeper注册中心宕机,还可以消费dubbo暴漏的服务 [只要消费端访问提供端一次,就会在消费端产生缓存]
-#  面试:
-#     Zookeeper宕机了,那么消费者能不能调用提供者的服务?    --能 因为又本地缓存
-#     没有注册中心,能不能掉服务?      --能 可以使用Dubbo直连方式
-# Dubbo直连 即在@Reference注解上 直接通过url注明地址可端口号即可
-#  @Reference( url = "127.0.0.1:20880")
-
-
-# Dubbo负载均衡策略
-# 1. 随机[默认]
-#     顾名思义,按照随机方式去访问;但我们可以配置weight权重,权重大的服务器被访问的几率也就越大;
-# 2. 轮询  (loadbalance = "roundrobin")
-#     按照顺序进行访问,即1,2,3,1,2,3... 但我们同样可以配置weight权重,但权重还是占一定规则的;
-# 3. 最少活跃调用数
-#     三台机器反应时间分别为100ms,300ms,800ms 那么下次访问的时候请求会到100ms的服务器上;
-# 4. 一致性Hash
-#     三台服务器 三个方法 getUser?uid=1 getUser?uid=2 getUser?uid=3
-#     getUser?uid=1始终会访问第一台服务器 方法名参数名都一样,那么都会落在同一台服务器上
-#     哪怕getUser?uid=1一直在访问,那么也只会访问对应的那台服务器,不会访问其他服务器
-
-
-
-
-
 
 
 

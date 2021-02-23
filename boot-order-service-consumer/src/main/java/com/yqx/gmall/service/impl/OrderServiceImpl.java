@@ -20,7 +20,10 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     // @Autowired  不再使用
-    @Reference  // 远程引用  会自动从注册中心发现  注入UserService
+    // 远程引用  会自动从注册中心发现  注入UserService
+    // @Reference //( url = "127.0.0.1:20880")     // dubbo直连 将地址直接告诉给UserService
+
+    @Reference    // (loadbalance = "roundrobin") loadbalance 负载均衡策略 roundrobin轮询
     private UserService userService;
 
     // 根据用户ID 初始化订单
