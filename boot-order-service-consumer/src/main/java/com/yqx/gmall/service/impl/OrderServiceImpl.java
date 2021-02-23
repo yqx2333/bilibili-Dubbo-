@@ -4,9 +4,10 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.yqx.gmall.bean.UserAddress;
 import com.yqx.gmall.service.OrderService;
 import com.yqx.gmall.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -41,5 +42,15 @@ public class OrderServiceImpl implements OrderService {
         // 将所有的收货地址 进行返回
         return addressList;
 
+    }
+
+    /**
+     * 如果服务调用失败,则降级调用该hello方法
+     * @param userId
+     * @return
+     */
+    public List<UserAddress> hello(String userId) {
+       return Collections.singletonList
+               (new UserAddress(10, "测试地址", "1", "测试", "测试", "1"));
     }
 }

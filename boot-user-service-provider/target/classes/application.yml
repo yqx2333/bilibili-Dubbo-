@@ -3,7 +3,7 @@ server:
 # 配置Dubbo
 dubbo:
   application:
-    name: boot-user-service-provider    # Dubbo服务名称 不可重复
+    name: boot-user-service-provider1    # Dubbo服务名称 不可重复
 
   registry:                             # Dubbo注册中心
     address: localhost:2181             # 注册中心地址
